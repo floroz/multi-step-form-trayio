@@ -50,7 +50,7 @@ export default (state: IFormState = initialState, action: IAction) => {
         let hasError = false;
 
         for (let key in newState) {
-          if (newState[key]?.error !== null) {
+          if (newState[key]?.error) {
             hasError = true;
           }
         }

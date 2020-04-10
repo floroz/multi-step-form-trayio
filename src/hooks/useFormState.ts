@@ -73,7 +73,7 @@ const useFormState = () => {
       Form Submitted!
       First Name: ${firstName.value}
       Role: ${role.value}
-      Email: ${email}
+      Email: ${email.value}
       Receives Tray.io updates: ${receiveUpdate.value ? "Yes" : "No"}
       Receives Communication: ${receiveCommunication.value ? "Yes" : "No"}
     `);
