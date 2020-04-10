@@ -10,12 +10,15 @@ const Form = () => {
   const {
     formState,
     onChangeHandler,
+    onCheckHandler,
     prevStep,
     nextStep,
     clearForm,
     onSubmitForm,
   } = useFormState();
   const { step } = formState;
+
+  console.log(formState);
 
   const renderStep = () => {
     switch (step) {
@@ -25,10 +28,7 @@ const Form = () => {
         );
       case 1:
         return (
-          <PrivacyForm
-            onChangeHandler={onChangeHandler}
-            formState={formState}
-          />
+          <PrivacyForm onCheckHandler={onCheckHandler} formState={formState} />
         );
       case 2:
         return <Done />;
@@ -44,7 +44,6 @@ const Form = () => {
       case 0:
         return (
           <>
-            <Button onClick={prevStep}>Previous</Button>
             <Button onClick={nextStep} primary>
               Next
             </Button>
@@ -54,7 +53,7 @@ const Form = () => {
         return (
           <>
             <Button onClick={prevStep}>Previous</Button>
-            <Button onClick={nextStep} primary type="submit">
+            <Button onClick={onSubmitForm} primary>
               Submit
             </Button>
           </>
@@ -79,9 +78,7 @@ const Form = () => {
           <span>Done</span>
         </div>
       </header>
-      <form onSubmit={onSubmitForm} className={styles.form}>
-        {renderStep()}
-      </form>
+      <form className={styles.form}>{renderStep()}</form>
       <div className={styles.buttonGroup}>{renderButtonGroup()}</div>
     </main>
   );

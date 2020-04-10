@@ -4,8 +4,8 @@ import styles from "./Button.module.scss";
 interface Props {
   children: ReactNode | string;
   primary?: boolean;
-  onClick?: () => void;
-  type?: "submit" | "reset";
+  onClick: any;
+  type?: "submit" | "reset" | "button";
   ariaLabel?: string;
 }
 

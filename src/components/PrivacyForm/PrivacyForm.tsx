@@ -2,12 +2,12 @@ import React, { SyntheticEvent } from "react";
 import useFormState, { IFormState } from "../Form/useFormState";
 import styles from "./PrivacyForm.module.scss";
 interface Props {
-  onChangeHandler: (event: SyntheticEvent<HTMLInputElement>) => void;
+  onCheckHandler: (event: SyntheticEvent<HTMLInputElement>) => void;
   formState: IFormState;
 }
 
 const PrivacyForm = (props: Props) => {
-  const { formState, onChangeHandler } = useFormState();
+  const { onCheckHandler, formState } = props;
   const { receiveUpdate, receiveCommunication } = formState;
   return (
     <div className={styles.privacyForm}>
@@ -17,8 +17,9 @@ const PrivacyForm = (props: Props) => {
           name="receiveUpdate"
           id="receiveUpdate"
           checked={receiveUpdate}
-          onChange={onChangeHandler}
+          onChange={onCheckHandler}
         />
+        Receive updates about Tray.io product by email
       </label>
       <label htmlFor="receiveCommunication">
         <input
@@ -26,8 +27,9 @@ const PrivacyForm = (props: Props) => {
           name="receiveCommunication"
           id="receiveCommunication"
           checked={receiveCommunication}
-          onChange={onChangeHandler}
+          onChange={onCheckHandler}
         />
+        Receive communication by email for other products
       </label>
     </div>
   );
