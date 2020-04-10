@@ -1,4 +1,6 @@
-interface IFormState {
+import React from "react";
+
+export interface IFormState {
   step: number;
   firstName: string;
   role: string;
@@ -8,13 +10,17 @@ interface IFormState {
   receiveCommunication: boolean;
 }
 
+type ValueOf<T> = T[keyof T];
+
+export type ValueOfIFormState = ValueOf<IFormState>;
+
 interface IAction {
   type: string;
-  payload: any;
+  payload?: any;
 }
 
 const initialState: IFormState = {
-  step: 1,
+  step: 0,
   firstName: "",
   role: "",
   email: "",
@@ -31,11 +37,20 @@ const CLEAR_FORM: string = "CLEAR_FORM";
 const reducer = (state: IFormState = initialState, action: IAction) => {
   switch (action.type) {
     case NEXT_STEP:
-      return;
+      return {
+        ...state,
+        step: state.step === 2 ? state.step : state.step + 1,
+      };
     case PREV_STEP:
-      return;
+      return {
+        ...state,
+        step: state.step === 0 ? state.step : state.step - 1,
+      };
     case UPDATE_FORM_FIELD:
-      return;
+      return {
+        ...state,
+        [action.payload.name]: [action.payload.value],
+      };
     case CLEAR_FORM:
       return initialState;
     default:
@@ -44,7 +59,42 @@ const reducer = (state: IFormState = initialState, action: IAction) => {
 };
 
 const useFormState = () => {
-  return null;
+  const [formState, dispatch] = React.useReducer(reducer, initialState);
+
+  const nextStep = (): void => {
+    dispatch({
+      type: NEXT_STEP,
+    });
+  };
+
+  const prevStep = (): void => {
+    dispatch({
+      type: PREV_STEP,
+    });
+  };
+
+  const onChangeHandler = (
+    name: keyof IFormState,
+    value: ValueOfIFormState
+  ): void => {
+    dispatch({
+      type: UPDATE_FORM_FIELD,
+      payload: {
+        name,
+        value,
+      },
+    });
+  };
+
+  const clearForm = (): void => dispatch({ type: CLEAR_FORM });
+
+  return {
+    formState,
+    nextStep,
+    prevStep,
+    onChangeHandler,
+    clearForm,
+  };
 };
 
 export default useFormState;

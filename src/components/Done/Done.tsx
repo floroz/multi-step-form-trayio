@@ -3,7 +3,7 @@ import React from "react";
 interface Props {}
 
 const Done = (props: Props) => {
-  return <div></div>;
+  return <div>Done</div>;
 };
 
 export default Done;
