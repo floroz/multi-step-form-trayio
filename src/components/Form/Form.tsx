@@ -3,6 +3,7 @@ import UserForm from "../UserForm/UserForm";
 import PrivacyForm from "../PrivacyForm/PrivacyForm";
 import Done from "../Done/Done";
 import useFormState from "./useFormState";
+import styles from "./Form.module.scss";
 
 const Form = () => {
   const { formState, onChangeHandler, prevStep, nextStep } = useFormState();
@@ -31,8 +32,18 @@ const Form = () => {
   };
 
   return (
-    <main>
-      <header>Header Tabs</header>
+    <main className={styles.main}>
+      <header className={styles.header}>
+        <div className={step === 0 ? styles.selectedStep : ""}>
+          <span>User</span>
+        </div>
+        <div className={step === 1 ? styles.selectedStep : ""}>
+          <span>Privacy</span>
+        </div>
+        <div className={step === 2 ? styles.selectedStep : ""}>
+          <span>Done</span>
+        </div>
+      </header>
       {renderStep()}
       <button onClick={prevStep}>Previous</button>
       <button onClick={nextStep}>Next</button>

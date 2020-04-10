@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from "react";
 import { IFormState } from "../Form/useFormState";
+import styles from "./UserForm.module.scss";
 
 interface Props {
   onChangeHandler: (event: SyntheticEvent<HTMLInputElement>) => void;
@@ -10,8 +11,9 @@ const UserForm = (props: Props) => {
   const { formState, onChangeHandler } = props;
   const { firstName, email, role, password } = formState;
   return (
-    <div>
+    <div className={styles.userForm}>
       <label htmlFor="firstName">
+        name: *
         <input
           type="text"
           name="firstName"
@@ -21,6 +23,7 @@ const UserForm = (props: Props) => {
         />
       </label>
       <label htmlFor="role">
+        role:
         <input
           type="text"
           name="role"
@@ -30,6 +33,7 @@ const UserForm = (props: Props) => {
         />
       </label>
       <label htmlFor="email">
+        email: *
         <input
           type="text"
           name="email"
@@ -39,6 +43,7 @@ const UserForm = (props: Props) => {
         />
       </label>
       <label htmlFor="password">
+        password: *
         <input
           type="password"
           name="password"
