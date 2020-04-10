@@ -101,6 +101,19 @@ const useFormState = () => {
     });
   };
 
+  const onSubmitForm = (event: SyntheticEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+
+    // validation
+
+    console.log(`
+      Form Submitted:
+      First Name: ${formState.firstName}
+      Role: ${formState.role}
+      Email: ${formState.email}
+    `);
+  };
+
   const clearForm = (): void => dispatch({ type: CLEAR_FORM });
 
   return {
@@ -108,6 +121,7 @@ const useFormState = () => {
     nextStep,
     prevStep,
     onChangeHandler,
+    onSubmitForm,
     clearForm,
   };
 };

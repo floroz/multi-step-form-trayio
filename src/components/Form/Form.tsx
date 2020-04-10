@@ -2,11 +2,19 @@ import React from "react";
 import UserForm from "../UserForm/UserForm";
 import PrivacyForm from "../PrivacyForm/PrivacyForm";
 import Done from "../Done/Done";
+import Button from "../Button/Button";
 import useFormState from "./useFormState";
 import styles from "./Form.module.scss";
 
 const Form = () => {
-  const { formState, onChangeHandler, prevStep, nextStep } = useFormState();
+  const {
+    formState,
+    onChangeHandler,
+    prevStep,
+    nextStep,
+    clearForm,
+    onSubmitForm,
+  } = useFormState();
   const { step } = formState;
 
   const renderStep = () => {
@@ -31,6 +39,33 @@ const Form = () => {
     }
   };
 
+  const renderButtonGroup = () => {
+    switch (step) {
+      case 0:
+        return (
+          <>
+            <Button onClick={prevStep}>Previous</Button>
+            <Button onClick={nextStep} primary>
+              Next
+            </Button>
+          </>
+        );
+      case 1:
+        return (
+          <>
+            <Button onClick={prevStep}>Previous</Button>
+            <Button onClick={nextStep} primary type="submit">
+              Submit
+            </Button>
+          </>
+        );
+      case 2:
+        return <Button onClick={clearForm}>Reset</Button>;
+      default:
+        return;
+    }
+  };
+
   return (
     <main className={styles.main}>
       <header className={styles.header}>
@@ -44,9 +79,10 @@ const Form = () => {
           <span>Done</span>
         </div>
       </header>
-      {renderStep()}
-      <button onClick={prevStep}>Previous</button>
-      <button onClick={nextStep}>Next</button>
+      <form onSubmit={onSubmitForm} className={styles.form}>
+        {renderStep()}
+      </form>
+      <div className={styles.buttonGroup}>{renderButtonGroup()}</div>
     </main>
   );
 };

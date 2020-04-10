@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from "react";
 import useFormState, { IFormState } from "../Form/useFormState";
+import styles from "./PrivacyForm.module.scss";
 interface Props {
   onChangeHandler: (event: SyntheticEvent<HTMLInputElement>) => void;
   formState: IFormState;
@@ -9,7 +10,7 @@ const PrivacyForm = (props: Props) => {
   const { formState, onChangeHandler } = useFormState();
   const { receiveUpdate, receiveCommunication } = formState;
   return (
-    <div>
+    <div className={styles.privacyForm}>
       <label htmlFor="receiveUpdate">
         <input
           type="checkbox"
