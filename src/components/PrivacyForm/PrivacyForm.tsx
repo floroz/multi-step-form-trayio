@@ -16,7 +16,7 @@ const PrivacyForm = (props: Props) => {
           type="checkbox"
           name="receiveUpdate"
           id="receiveUpdate"
-          checked={receiveUpdate}
+          checked={receiveUpdate.value}
           onChange={onCheckHandler}
         />
         Receive updates about Tray.io product by email
@@ -26,7 +26,7 @@ const PrivacyForm = (props: Props) => {
           type="checkbox"
           name="receiveCommunication"
           id="receiveCommunication"
-          checked={receiveCommunication}
+          checked={receiveCommunication.value}
           onChange={onCheckHandler}
         />
         Receive communication by email for other products

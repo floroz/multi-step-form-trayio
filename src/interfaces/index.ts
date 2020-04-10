@@ -4,7 +4,7 @@ export interface IFormState {
     value: string;
     error: string | null;
   };
-  role: string;
+  role: { value: string };
   email: {
     value: string;
     error: string | null;
@@ -13,8 +13,9 @@ export interface IFormState {
     value: string;
     error: string | null;
   };
-  receiveUpdate: boolean;
-  receiveCommunication: boolean;
+  receiveUpdate: { value: boolean };
+  receiveCommunication: { value: boolean };
+  [key: string]: any;
 }
 
 export interface IAction {

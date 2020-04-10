@@ -55,19 +55,27 @@ const useFormState = () => {
     (event: SyntheticEvent<HTMLFormElement>): void => {
       event.preventDefault();
 
+      const {
+        firstName,
+        email,
+        role,
+        receiveCommunication,
+        receiveUpdate,
+      } = formState;
       // validation
 
       // if everything goes okay then go to done
       nextStep();
 
       // print form
+
       console.log(`
-      Form Submitted:
-      First Name: ${formState.firstName}
-      Role: ${formState.role}
-      Email: ${formState.email}
-      Receives Tray.io updates: ${formState.receiveUpdate ? "Yes" : "No"}
-      Receives Communication: ${formState.receiveCommunication ? "Yes" : "No"}
+      Form Submitted!
+      First Name: ${firstName.value}
+      Role: ${role.value}
+      Email: ${email}
+      Receives Tray.io updates: ${receiveUpdate.value ? "Yes" : "No"}
+      Receives Communication: ${receiveCommunication.value ? "Yes" : "No"}
     `);
     },
     [nextStep, formState]

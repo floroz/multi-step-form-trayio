@@ -76,7 +76,9 @@ const Form = () => {
           <span>Done</span>
         </div>
       </header>
-      <form className={styles.form}>{renderStep()}</form>
+      <form className={styles.form} noValidate>
+        {renderStep()}
+      </form>
       <div className={styles.buttonGroup}>{renderButtonGroup()}</div>
     </main>
   );

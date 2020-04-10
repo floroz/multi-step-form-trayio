@@ -31,7 +31,7 @@ const UserForm = (props: Props) => {
           type="text"
           name="role"
           id="role"
-          value={role}
+          value={role.value}
           onChange={onChangeHandler}
         />
       </label>
