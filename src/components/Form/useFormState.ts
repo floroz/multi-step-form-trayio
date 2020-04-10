@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 
 export interface IFormState {
   step: number;
@@ -73,10 +73,9 @@ const useFormState = () => {
     });
   };
 
-  const onChangeHandler = (
-    name: keyof IFormState,
-    value: ValueOfIFormState
-  ): void => {
+  const onChangeHandler = (event: SyntheticEvent<HTMLInputElement>): void => {
+    const { name, value } = event.target as HTMLInputElement;
+
     dispatch({
       type: UPDATE_FORM_FIELD,
       payload: {

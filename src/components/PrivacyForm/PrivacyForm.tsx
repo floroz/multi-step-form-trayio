@@ -1,7 +1,8 @@
-import React from "react";
-import { IFormState, ValueOfIFormState } from "../Form/useFormState";
+import React, { SyntheticEvent } from "react";
+import { IFormState } from "../Form/useFormState";
 interface Props {
-  onChangeHandler: (name: keyof IFormState, value: ValueOfIFormState) => void;
+  onChangeHandler: (event: SyntheticEvent<HTMLInputElement>) => void;
+  formState: IFormState;
 }
 
 const PrivacyForm = (props: Props) => {
