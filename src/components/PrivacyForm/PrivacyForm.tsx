@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from "react";
-import useFormState, { IFormState } from "../Form/useFormState";
+import { IFormState } from "../../interfaces";
 import styles from "./PrivacyForm.module.scss";
 interface Props {
   onCheckHandler: (event: SyntheticEvent<HTMLInputElement>) => void;

@@ -3,7 +3,7 @@ import UserForm from "../UserForm/UserForm";
 import PrivacyForm from "../PrivacyForm/PrivacyForm";
 import Done from "../Done/Done";
 import Button from "../Button/Button";
-import useFormState from "./useFormState";
+import useFormState from "../../hooks/useFormState";
 import styles from "./Form.module.scss";
 
 const Form = () => {
@@ -17,8 +17,6 @@ const Form = () => {
     onSubmitForm,
   } = useFormState();
   const { step } = formState;
-
-  console.log(formState);
 
   const renderStep = () => {
     switch (step) {
