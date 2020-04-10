@@ -64,7 +64,7 @@ const Form = () => {
   };
 
   return (
-    <main className={styles.main}>
+    <main className={styles.main} data-testid="form-component">
       <header className={styles.header}>
         <div className={step === 0 ? styles.selectedStep : ""}>
           <span>User</span>

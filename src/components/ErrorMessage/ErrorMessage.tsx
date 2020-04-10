@@ -10,7 +10,11 @@ const ErrorMessage = (props: Props) => {
 
   if (!error) return null;
 
-  return <div className={styles.error}>{error}</div>;
+  return (
+    <div className={styles.error} data-testid="error">
+      {error}
+    </div>
+  );
 };
 
 export default ErrorMessage;
