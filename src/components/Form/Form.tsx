@@ -57,7 +57,7 @@ const Form = () => {
           </>
         );
       case 2:
-        return <Button onClick={clearForm}>Reset</Button>;
+        return <Button onClick={clearForm}>Return</Button>;
       default:
         return;
     }
