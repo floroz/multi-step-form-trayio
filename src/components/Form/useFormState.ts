@@ -10,10 +10,6 @@ export interface IFormState {
   receiveCommunication: boolean;
 }
 
-type ValueOf<T> = T[keyof T];
-
-export type ValueOfIFormState = ValueOf<IFormState>;
-
 interface IAction {
   type: string;
   payload?: any;
@@ -47,9 +43,29 @@ const reducer = (state: IFormState = initialState, action: IAction) => {
         step: state.step === 0 ? state.step : state.step - 1,
       };
     case UPDATE_FORM_FIELD:
+      /**
+       * Logic for handling checkbox change
+       */
+      let checkboxValue;
+      if (action.payload.name === "receiveUpdate") {
+        checkboxValue = state["receiveUpdate"];
+        return {
+          ...state,
+          receiveUpdate: !checkboxValue,
+        };
+      } else if (action.payload.name === "receiveCommunication") {
+        checkboxValue = state["receiveCommunication"];
+        return {
+          ...state,
+          receiveCommunication: !checkboxValue,
+        };
+      }
+      /**
+       * Default logic for text input
+       */
       return {
         ...state,
-        [action.payload.name]: [action.payload.value],
+        [action.payload.name]: action.payload.value,
       };
     case CLEAR_FORM:
       return initialState;
